@@ -8,7 +8,7 @@ window.onload = function () {
                 frm.append('imageInput', this.files[0]);
                 $.ajax({
                     method: 'POST',
-                    address: './comics',
+                    address: 'https://antonite.github.io/comics',
                     data: frm,
                     contentType: false,
                     processData: false,
