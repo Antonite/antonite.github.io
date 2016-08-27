@@ -22,7 +22,7 @@ function findComics() {
 function findPics(dir, comicName) {
     var comicPics = [];
     $.ajax({
-        url: '.' + dir,
+        url: 'https://antonite.github.io' + dir,
         success: function (data) {
             $(data).find("a:contains(.jpeg)").each(function () {
                 comicPics.push($(this).attr("href"));
