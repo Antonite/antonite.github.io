@@ -7,7 +7,7 @@ var currentComicNum = 0;
 
 function findComics() {
     $.ajax({
-        url: '.',
+        url: 'comics/',
         success: function (data) {
             var comicPaths = $(data).find("a:contains(COMIC_)");
             totalComics = comicPaths.length;
@@ -20,30 +20,30 @@ function findComics() {
 }
 
 function findPics(dir, comicName) {
-    // var comicPics = [];
-    // $.ajax({
-    //     url: 'https://antonite.github.io' + dir,
-    //     success: function (data) {
-    //         $(data).find("a:contains(.jpeg)").each(function () {
-    //             comicPics.push($(this).attr("href"));
-    //         });
-    //         comics[comicName] = comicPics;
-    //         comicsLoaded++;
-    //         processComics();
-    //     },
-    //     error: function (data) {
-    //         console.log(data);
-    //     }
-    // });
+    var comicPics = [];
+    $.ajax({
+        url: '.' + dir,
+        success: function (data) {
+            $(data).find("a:contains(.jpeg)").each(function () {
+                comicPics.push($(this).attr("href"));
+            });
+            comics[comicName] = comicPics;
+            comicsLoaded++;
+            processComics();
+        },
+        error: function (data) {
+            console.log(data);
+        }
+    });
 }
 
 function processComics() {
-    // if(comicsLoaded < totalComics) return;
+    if(comicsLoaded < totalComics) return;
 
-    // for (var key in comics) {
-    //     if (comics.hasOwnProperty(key)) {
-    //         comicNames.push(key);
-    //     }
-    // }
-    // generateComicSelector();
+    for (var key in comics) {
+        if (comics.hasOwnProperty(key)) {
+            comicNames.push(key);
+        }
+    }
+    generateComicSelector();
 }
