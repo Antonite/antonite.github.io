@@ -7,7 +7,7 @@ var currentComicNum = 0;
 
 function findComics() {
     $.ajax({
-        url: '//antonite.github.io/comics',
+        url: 'https//antonite.github.io/comics/',
         success: function (data) {
             var comicPaths = $(data).find("a:contains(COMIC_)");
             totalComics = comicPaths.length;
